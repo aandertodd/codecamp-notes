@@ -367,3 +367,171 @@ pick number between 1 and 50*
     zach_left(zach_angle)
     jesse_forward(jesse_dist)
     jesse_forward(jesse_angle)
+
+##function
+ is a named sequence of statements that carry out a specific task.
+ (nice packaging of an Algorithm)
+
+ calling a function means running the function in a code with return values
+
+ Visualizing a function:
+ parameter(s) >> function >> return value (no mater how many parameters you only get one return)
+
+ creating a function for something allows you to reuse that code anywhere in the program
+ if you don't store a return variable/value it goes away
+
+ *Activity*
+
+ Function composition is putting a function in a function
+ ex: age = int(input("What's your age?"))
+
+if you put code after a return statement it doesn't execute
+or the function "exits" when a return statement runs
+
+*Some More Questions
+
+1. Does a function have to have parameters - no, a function may have zero or more parameters, as decided by the programmer.
+2. What happens if we call a function without providing a value for one of more input parameters? We get a type error
+3. Does a fucntion have to have a return value? no
+4. What happens if we have a function that doesn't have a return value, but we try to store a result in a variable?the value that is implicitly returned and stored is the **special value**
+
+the default return of a funtion without a result is none
+
+##Scope
+all variables and parameters within a program have a scope. Their scope determines how they may be accessed and used.
+
+ex:
+def add_two(num):
+ 	num = num+2
+
+add_two(2)
+print(num)
+
+input parameter or variable only exist within the function
+
+##Local scope
+variables and parameters within a function have local scope. They may only be accessed within the function in which they are defined. We call these variables local variables.
+
+##Global scope
+variables and parameters that are not defined within a function have global scope. They may be accessed from anywhere within the given file or program.
+
+num = 2 << Global
+def print_num(): << local
+	print(num)
+
+print_num()
+
+functions can see things outside of themselves but can't pull from other functions
+
+##Shadowing
+
+num = 2
+
+def print_num(num):
+	print(num)
+
+print_num(3)
+
+*this situation has two variables with the same name. in this case, the new variable inside the box (local) ignores (or shadows) the global variable. You also can't change the global variable inside of a local function.*
+
+------------
+
+##Making decisions
+*Branching*
+
+code block << true << condition >> false >> code block #2
+
+programs make decisions in the form of true or false (Boolean) *another type* (other types: str, int, float, list)
+-must be capitalized
+-are not strings; True is different from "True"
+-are the result of certain arithmetic comparison expressions
+
+    print(type(True))
+
+    Output: <class 'bool'>
+
+Comparisons: > < >= <= == != 
+comparisons turn into a true or false
+
+##Boolean Algebra
+
+Ex: It is Friday and we are in class (and says both are true)
+Ex: I am either asleep or awayke (or says one or the other is true)
+
+##Boolean order of OPERATIONS
+
+**
+* / // %
++ -
+comparisons
+
+
+##Conditional Syntax (Branching in action)
+starts with if condition:
+    the next line (code block 1) is indented
+ends with else:
+    second block of code is also indented
+
+Ex:
+if expression_or_variable:
+    code
+else:
+    code 2
+
+% 2 == 0 (shows number is even) same as saying n % 2 == 0
+% 2 == 1 (shows number is odd) same as saying n % 2 == 1
+% 3 == 0 (shows number is multiple of 3, can be done with any number)
+
+Else conditional is optional
+
+##Nesting Conditionals
+if n < 0 :
+    print("n is negative")
+else: 
+    if n > 0:
+        print("n is positive")
+    else:
+        print("n is is 0")
+
+##The elif Clause
+we can have multiple branches -- that is, multiple tests -- within the same conditional using elif
+
+if n < 0:
+    print("n is negative")
+elif n > 0:
+    print("n is positive")
+else:
+    print("n is 0")
+
+*Conditionals only print the first statement it comes across that is True (even if several statements are True)!!*
+
+##radius of circle example:
+
+import math <<< (module example)
+
+def calculate_area_of_circle(radius): <<< (function example, functionn should contain the algorithm)
+    area = math.pi(since we imported math) * radius**2
+    return area
+
+radius = float(input("What is the radius of your circle?")) <<< test code
+
+
+if radius >= 0:
+    area = calculate_area_of_circle
+    print("The area of a circle of radius", radius, "is", area)
+esle:
+    print("You gave a negative radius. That doesn't work, try again.")
+
+##Simple spell-checker example:
+#given a word, determine if it is spelled correctly
+def is_spelled_correctly(word): <<< the name of the function tells you this will be a boolean return
+    dictionary = ["launchcode", "coding", "blue", "rocket"]
+    #return a boolean
+    for term in dictionary:
+        if word == term:
+            return True
+    
+    return False
+print(is_spelled_correctly("red"))
+
+-----------
