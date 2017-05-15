@@ -535,3 +535,37 @@ def is_spelled_correctly(word): <<< the name of the function tells you this will
 print(is_spelled_correctly("red"))
 
 -----------
+
+##While Loop
+ "indefinite"
+
+while condition:
+
+ code block
+
+ boolean expression
+ -comparison
+ -boolean function
+ -variable or value
+
+ loop as long as condition is true
+ danger in the fact that it might never be false
+ if the condition is false we will have an infinite loop
+
+ex of infinite loop:
+while(True):
+    print(i)
+    i += 
+
+where infinite loops might be useful:
+-games (often infinite)
+-web server
+
+while(true):
+    # respond to requests
+
+How to ask quesions:
+-clearly state what my problem is (where you're confused)
+-clearly state what you do understand
+-clearly state what you have tried (what did you try and why didn't it work)
+-where have you looked for information?
