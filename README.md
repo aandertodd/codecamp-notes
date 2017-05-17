@@ -150,9 +150,11 @@ class selector = .blue{ (on a heading, paragraph, link, anything you want to cha
 
 *Week Two*
 
-Algorithm is a self-contained step-by-step set of operations to be performed (to solve a problem, carry out operation)
+##Algorithm
+is a self-contained step-by-step set of operations to be performed (to solve a problem, carry out operation)
 
-Syntax - defined by formal rules, does not specify meaning
+##Syntax 
+defined by formal rules, does not specify meaning
 Semantics does
 
 ## Value Error
@@ -375,7 +377,7 @@ pick number between 1 and 50*
  calling a function means running the function in a code with return values
 
  Visualizing a function:
- parameter(s) >> function >> return value (no mater how many parameters you only get one return)
+ parameter(s) >> function >> return value (no matter how many parameters you only get one return)
 
  creating a function for something allows you to reuse that code anywhere in the program
  if you don't store a return variable/value it goes away
@@ -392,8 +394,8 @@ or the function "exits" when a return statement runs
 
 1. Does a function have to have parameters - no, a function may have zero or more parameters, as decided by the programmer.
 2. What happens if we call a function without providing a value for one of more input parameters? We get a type error
-3. Does a fucntion have to have a return value? no
-4. What happens if we have a function that doesn't have a return value, but we try to store a result in a variable?the value that is implicitly returned and stored is the **special value**
+3. Does a function have to have a return value? no
+4. What happens if we have a function that doesn't have a return value, but we try to store a result in a variable? the value that is implicitly returned and stored is the **special value**
 
 the default return of a funtion without a result is none
 
@@ -403,7 +405,7 @@ all variables and parameters within a program have a scope. Their scope determin
 ex:
 def add_two(num):
  	num = num+2
-
+    return num + 2 (using this elminates the need for the temporary num variable)
 add_two(2)
 print(num)
 
@@ -434,6 +436,31 @@ print_num(3)
 
 *this situation has two variables with the same name. in this case, the new variable inside the box (local) ignores (or shadows) the global variable. You also can't change the global variable inside of a local function.*
 
+*To find the absolute value of a number use 
+print(abs(put number here))
+
+*math module has a pow function
+print(math.pow(number, power))
+
+*max returns the max number sent to it
+works with lists and can take any number of args separated by ,
+print(max(7, 11))  prints 11
+
+##Accumulator Pattern
+def square(x):
+    runningtotal = 0
+    for counter in range(x):
+        runningtotal = runningtotal + x
+
+    return runningtotal
+
+toSquare = 10
+squareResult = square(toSquare)
+print("The result of", toSquare, "squared is", squareResult)
+
+This process of breaking a problem into smaller subproblems is called functional decomposition.
+
+non fruiful function (or procedure) doesn't return a value 
 ------------
 
 ##Making decisions
@@ -535,6 +562,7 @@ def is_spelled_correctly(word): <<< the name of the function tells you this will
 print(is_spelled_correctly("red"))
 
 -----------
+Week 3
 
 ##While Loop
  "indefinite"
@@ -569,3 +597,95 @@ How to ask quesions:
 -clearly state what you do understand
 -clearly state what you have tried (what did you try and why didn't it work)
 -where have you looked for information?
+
+data types - int, str, bool, lists, float
+
+##Primitive Data Types
+can it be broken down into something smaller? 
+primitive can't be broken down - int, float, bool
+not collections
+
+##Composite or Non-primitive
+can be broken down - lists and strings (dog "d" "o" "g", [0,1,2,3] 0 1 2 3)
+collections
+
+#Characters
+we'll refer to a string of length 1 as a character
+many programming languages have their own character data type, but Python does not
+
+#Empty collections
+we can have collection without anything in the collection [] ''
+
+#Ordered collecions
+lists and strings are ordered collections and have a specific order.
+we refer to the place of an individual item in that order as it's *index*.
+we may acces the individual components using the index of that item.
+
+#Brack notation
+allows us to get an individual item out of a list or string
+for a list my_list we can get the item with index i using: my_list[i]
+
+***ex:
+message = 'Hello'
+print(message[1])
+
+output: e (because e is the letter at index 1)***
+
+*strings behave like lists of characters*
+
+***
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+for i in range(len(alphabet)): # range(26) -> [0, 1, 2, 3... 25]  DONT DO THIS (maybe sometimes you can, reversing a string, printing every other character from a string)
+    print(alphabet[i]) 
+
+for letter in alphabet: DO THIS / MUCH BETTER TO READ AND IS SIMPLER
+    print(letter)
+***
+
+user_string = input("Enter a string: ")
+new_str = ''
+
+for letter in user_string:
+    if letter != 'a':
+        new_str = new_str + letter
+print(new_str)
+
+True of "strings as lists":
+
+ordered collection
+indexes/bracket notation
+loops over string
+
+Not true of "strings as lists"
+name = "chris"
+name[0] = 9
+[0, 'a', True] (lists can be mixed types and strings can not!)
+
+##Good Problem Solving tips:
+- pay attention to implicit information
+- writing things down
+- asked questions
+- thinking through different possibilities
+
+Problem solving is
+intuitive
+creative
+practiceable
+synthetic
+hard
+rewarding
+a process
+
+Problem solving is NOT
+formulaic
+repetitive
+easy
+
+#Principles
+DONT panic
+restate the problem (in your head, in writing, to a classmate)
+outline the problem (write down what you know, subdivide into steps)
+reduce the problem (think about a simpler version of the problem)
+look for similarities (have you solved something similar before, how are they sim/diff?)
+DONT panic
