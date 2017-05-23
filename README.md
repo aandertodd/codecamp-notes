@@ -190,7 +190,18 @@ How to avoid bugs:
 Work in small units*
 using good names for things (semantics)*
 
+% gives the remainder after divisions
+3%2 is 1
+5%2 is 1
+8%5 is 3
+52%13 is 0
 
+Expressions are values with operators (something that evaluates to a value)
+ 5%2
+ str expression - "Hello", "hello" + "world"
+ Variable - a "box" that can hold a value (or expression) (str, float, formula)
+  my_var = 42
+= is an assignment operator (NOT equal but assigns the value to the variable)
 
 SUBMIT HOMEWORK:
 run report from unit-1-assignment-sleepytodd1
@@ -458,6 +469,13 @@ toSquare = 10
 squareResult = square(toSquare)
 print("The result of", toSquare, "squared is", squareResult)
 
+def sum_to(n):
+    the_sum = 0
+    for a_number in range(1, n+1):
+        the_sum = the_sum + a_number
+
+    return the_sum
+
 This process of breaking a problem into smaller subproblems is called functional decomposition.
 
 non fruiful function (or procedure) doesn't return a value 
@@ -621,7 +639,7 @@ lists and strings are ordered collections and have a specific order.
 we refer to the place of an individual item in that order as it's *index*.
 we may acces the individual components using the index of that item.
 
-#Brack notation
+#Bracket notation
 allows us to get an individual item out of a list or string
 for a list my_list we can get the item with index i using: my_list[i]
 
@@ -689,3 +707,203 @@ outline the problem (write down what you know, subdivide into steps)
 reduce the problem (think about a simpler version of the problem)
 look for similarities (have you solved something similar before, how are they sim/diff?)
 DONT panic
+
+##Slice operator
+my_str[2] pulls character at index 2
+my_str[2:] pulls characters from index 2 until the end
+my_str[:] returns everything
+my_str[:5] returns index 0 to index 4
+
+##Immutability
+strings are immutable which means you can't change a specific character of a string
+
+
+##Find
+my_str.find('n') <<< this will search a word for this char and return the index value it's located at
+
+s = "ball" <<< why does this code print out of order? see line 4
+r = ""
+for item in s:
+    r = item.upper() + r <<< having the r after prints the order in reverse. putting the r in front prints normally
+print(r)
+
+##List values
+a list may contain any value. Really. ANY value.
+this means we can do things like:
+
+    mixed_list = [1, 2 [3, 4]]
+
+Here, [3,4] is referred to as a sublist
+
+sublists are a single value inside of the lists
+
+[a, b, b] len =3
+[a, b, [c, d]] len = 3
+
+#Concatenation
+like strings, we can use + to concatenate lists
+combined = [a,b,c] + [1, 2]
+           [a, b, c, 1, 2]
+
+*in Python, every value is an object*
+ for every unique string there will only be one copy of that string, any variables assigned the same name of that original will just be a reference to the original; a new copy isn't created.
+
+list1 = [1,2,3]
+list2 = list1 * 3 or list1 + list1 + list1
+list2 = [1,2,3,1,2,3,1,2,3]
+
++ always generates a new list
+
+a = [1,2,3]
+b = a
+b[0] = 4
+a = [4,2,3]
+
+## Things David taught me
+type idle into terminal to use python shell
+instead of typing "This " + str() "is a thing" + ... use {} and .format to insert like so..
+"This {} is a thing".format(data) << automatically inserts things
+keyboard shortcuts: command a highlights everything, fn f5 runs code
+
+##Chapter 10
+len used with list shows you list lenght, but sublists count as one item no matter how many items they hold
+id returns the id of that str
+you can * lists and strings
+list = [1,2,3]
+print(list*3) = [1,2,3,1,2,3,1,2,3]
+
+*lists ARE mutable unilike strings
+
+fruit = ["banana", "apple", "cherry"]
+print(fruit)
+
+fruit[0] = "pear"
+fruit[-1] = "orange"
+print(fruit)
+
+OUTPUT
+['banana', 'apple', 'cherry']
+['pear', 'apple', 'orange']
+
+*you can slice lists
+a_list = ['a', 'b', 'c', 'd', 'e', 'f']
+print(a_list[1:3])
+print(a_list[:4])
+print(a_list[3:])
+print(a_list[:])
+
+An assignment to an element of a list is called item
+assignment. Item assignment does not work for strings. Recall that strings are immutable.
+ 
+* you can you del (delete) to remove items at any index.
+
+Things we can do with lists
+-sort()
+-access members by index using[] ***
+-get length using len() ***
+-append() *** 
+-insert()
+-pop
+-concatenate + ***
+-assign a value to a given index: my_list[3]='a' ***
+-slice - my_list[start:end] ***
+-clone - my_list[:]  ***
+
+concatenation always creates new lists
+
+my_list = [1,2,3,4,5,6]
+firsthalf = my_list[:3]
+secondhalf = my_list[4:]
+glue = firsthalf + secondhalf
+glue = [1,2,3,4,5,6] <<< has the same as my_list but is not the same list
+
+
+slicing is a piece of a list
+cloning is almost a duplicate of the list (not the same list)
+
+str.insert(2, 'z') = inserts 'z' to index 2 and pushes the other chars back a space
+        [1,2,3] becomes [1,2, z, 3]
+
+alist[1:2] = [2] keeps it a list
+alist[2] = 2 shows what item was at index 2 and doesn't keep as a list
+
+a 'reference' is a pointer[literally a memory address like a street address] to an object in memory.
+
+## Passed by refernce
+when we call a function and pass it a reference variable(e.g. something that holds a list) the function
+can CHANGE that object. Passing by reference. changes to parameters of a function are returned outside as well.
+
+## Passed by value
+when we call a function and pass it a primitive value(can't be broken down) that value is copied in. Passing by value
+value is copied into the function and changes are not seen outside the function.
+
+**Primitives** passed by value
+ints, floats, true, false
+
+**Non-primitives** always passed by reference
+objects (like turtles), str/collections/lists
+
+## Pure function
+does NOT alter the parameters that it's given. Usually return a new list, object, etc.
+
+## Mutator
+a function that does alter (reference) parameters. 
+
+name = "Todd"
+name_char = list(name)
+print(name_char)
+['T','o','d','d']
+friends = 'jesse','zach'
+
+#Split
+can turn a string into a list with split
+friends_list = friends.split(',') <<< splits list at every occurence of a comma. this is a delimiter
+
+*split converts to list as well as breaking it up.
+
+#Join
+friends_str = '&'.join(friends_list)
+
+
+def double_ints(some_ints):
+    for idx in range(len(some_ints)):
+    some_ints[idx] = some_ints[idx] * 2
+
+def double_ints_pure(some_ints):
+    new_ints = some_ints[:]
+    for idx in range(len(new_list)):
+        new_list[idx] = some_ints*2
+    return new_list
+
+def evens(some_ints):
+    new_list = []
+    for num in some_ints:
+        if num % 2 == 0:
+            new_list.append(num)
+    return new_list
+
+## List comprehensions:
+[expression for item in list, if condition]
+some_ints = [1,2,3,4,5,6]
+ex:
+
+
+## Filtering = condition
+[num for num in some_ints if num % 2 == 0]
+[2,4,6]
+##Updating = expression
+[num*2 for num in some_ints]
+[2,4,6,8,10,12]
+
+cloning a list with list comprehension
+[animal for animal in animals]
+
+## Tuple
+is an immutable ordered collection ( like a list which is ordered, like a str because immutable)
+
+my_tuple = (1,2,3)
+my_tuple[0] can access index
+my_tuple[1:] can slice like list
+my_tuple[0] = 'dog' gives an error because it's immutable
+
+tuple can return two things
