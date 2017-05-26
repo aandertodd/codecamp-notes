@@ -475,6 +475,18 @@ def sum_to(n):
         the_sum = the_sum + a_number
 
     return the_sum
+-----------
+
+def removeVowels(s):
+    vowels = "aeiouAEIOU"
+    sWithoutVowels = ""
+    for eachChar in s:
+        if eachChar not in vowels:
+            sWithoutVowels = sWithoutVowels + eachChar
+    return sWithoutVowels
+
+print(removeVowels("compsci"))
+print(removeVowels("aAbEefIijOopUus"))
 
 This process of breaking a problem into smaller subproblems is called functional decomposition.
 
@@ -1116,3 +1128,8 @@ class Course:
 
 codecamp = Course('Immersive CodeCamp', 102, 'LC', 'Chris Bay')
 todd = Student('Todd', 'Anderson', 4)
+
+#inheritance
+"class extension" an object oriented tool for sharing methods and properties among classes
+inheritance is an 'is-a' relationship. (student is a person, instructor is a person. they inherit from person class)
+
