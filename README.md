@@ -889,13 +889,16 @@ ex:
 
 
 ## Filtering = condition
-[num for num in some_ints if num % 2 == 0]
+[num for num in some_ints if num % 2 == 0] like doing a for loop and an if statement in one line *doesn't need if condition
 [2,4,6]
 ##Updating = expression
 [num*2 for num in some_ints]
 [2,4,6,8,10,12]
+my_list = [1,2,3,4]
+double = [0 for item in my_list] << [0,0,0,0,]
 
 cloning a list with list comprehension
+new list = [num for num in my_list]<<<< makes a copy of my_list
 [animal for animal in animals]
 
 ## Tuple
@@ -907,3 +910,209 @@ my_tuple[1:] can slice like list
 my_tuple[0] = 'dog' gives an error because it's immutable
 
 tuple can return two things
+
+##Yahtzee studio
+sales = [[5,2],[7,9]]
+these can be accessed by using ** sales[1][0] which would gives us number seven from itme two in the list
+first number picks from which top list item and index two looks into the sublist.
+
+#how many weeks are there
+#loop over the input(list of lists) daily sales
+
+def average_sales(daily_sales):
+    
+    #create a list to store averages in
+    averages = []
+    
+    for week in daily_sales:
+        #compute average of values within week
+        sum = 0
+        for day_sales in week:
+            sum += day_sales
+        
+        week_average = sum/len
+        
+        
+        #put the average in ...
+        averages.append(week_average)
+    
+    #return list of averages
+    return averages
+
+print(average_sales(sales))
+
+# Crypto is similar to rot 13
+caesar
+viginere  encryption 
+          algorithm
+          encrypt
+          decrypt
+str(message) returns result of rotating each alphabetic character of a str 13 places to the right
+rotate = stepping x many characters to the right
+d = q
+dog = qbt << encrypted string
+
+loop through the message (for)
+for each character, rotate it (function)
+create our own list with each letter or a str with every letter next to each other "abcdefg..."
+alphabet = "abcdef.."
+alphabet.find('a') << returns index of that string
+add 13
+alphabet[13] 
+or...
+set the first alhapbet character to be the place 13 is n so "nopqrstuvwxyzabcdef.."
+modulo sends you back to the beginning :)
+13 + next number % 26 << anything that wraps around is always a modulo problem
+to decrypt go the same amount forward because 13 is half of 26.
+
+leave spaces and . alone by using isalpha()
+preserve capitalization
+
+viginere we need a message and a keyword (and keyword will just be a word)
+
+message: the crow flies at midnight
+key:     boom
+
+compare t to b and rotate
+compare h to o and rotate
+compare e to o and rotate
+compare m to c and rotate << skip the space (is this an alphabetic character)
+
+repeat the keyword in comparison with the message
+
+## Dictionaries
+Mutable, unordered collections of key/value pairs
+*sometimes called asscociative collections
+create with {} 
+
+zip_codes = {'Gravois Park': 63118, 'Benton Park': 63118, 'Saint Louis Hills': 63109}
+
+key is unique, value is not unique
+key must be an immutable type (str, tuple)
+
+using tuples...
+tuples_in_dict = {(1,1): 'some value'}
+print(tuples_in_dict) <<< {(1,1): 'some value'}
+
+my_dict = {'first': 'Volkswagen', 'second': 'Jack', 0: 'LaunchCode'}
+
+values can be LITERALLY anything (str, tuples, turtles, lists... )
+
+zip_codes.get('marine villa', 0) <<< if there isn't a 'marine villa' it will return the default value
+
+## Important for writing pure functions
+
+"The pure version of doubleStuff above made use of an important pattern for your toolbox. Whenever you need to write a function that creates and returns a list, the pattern is usually:
+
+initialize a result variable to be an empty list
+loop
+   create a new element
+   append it to result
+return the result
+
+Let us show another use of this pattern. Assume you already have a function is_prime(x) that can test if x is prime. Now, write a function to return a list of all prime numbers less than n:
+
+def primes_upto(n):
+    """ Return a list of all prime numbers less than n. """
+    result = []
+    for i in range(2, n): <<< range starting at 2 (because one isn't prime) to n(whatever number being checked)
+        if is_prime(i):
+            result.append(i)
+    return result"
+
+# Get init code simplified
+myname = "Edgar Allan Poe"
+namelist = myname.split()
+init = ""
+for aname in namelist:
+    init = init + aname[0]
+print(init)
+
+## GPA studio
+
+#create a list to hold the grades
+grades []
+#prompt and collect grades, use while loop
+while continue_entry:
+
+    #prompt for score and credits
+    score = float(input("You're grade(0.0-4.0): "))
+    num_credits -int(input("Credits: "))
+
+    #put each grade in a dictionary
+    grade = {'score':score, 'credits': num_credits}
+    grades.append(grade)
+    #prompt to ask if they want to continue
+
+    #calculate gpa
+for a_grade in grades:
+    quality_score += a_grade['credits'] * a_grade['score']
+    total_credits += a_grade['credits']
+
+gpa = quality_score / 
+    #print the gpa
+
+##Chapter 13
+
+Problems with dictionaries
+- nothing to enforce use of correct keys
+- no way for us to 'bind' behavior to data they should be used for
+
+class:
+class student:
+    def __init__(self, first_name, last_name,
+    student_id):
+    self.first_name = first_name
+    self.last_name = last_name
+    self.student_id = student_id
+
+*if you use init you have to use self
+
+chris = student('Chris', 'Bay', 123456)
+
+print(chris.first_name)
+print(chris.last_name)
+print(chris.student_id)
+
+* class is a template for creating objects. 1 template, many things
+  these classes have both data (their own variables) and behaviors(their own functions)
+
+__init__ is our class' initializer or constructor
+
+classes have attributes:
+- variables (member variables that belong to specific types of objects)
+- functions (member function or methods)
+to use attributes, we use dot-notation
+
+#Encapsulation:
+the technique of "bundling" related data (member variables, instance variables) and behaviors (member functions, methods)
+
+def __str__(self): << lets us convert to str
+
+----------------
+
+class Course:
+
+    def __init__(self, name, course_id, department, instructor, number_of_credits=3): << default values have to be at the end of the list like here with number_of_credits>>
+        self.nam = name
+        self.course_id = course_id
+        self.department = department
+        self.instructor = instructor
+        self.number_of_credits = number_of_credits
+        self.students = []
+
+    def enroll_student(self, student):
+        self.students.append(student) <<adds one student to the list
+    
+    def print_roster(self):
+        for student in self.students:
+            print(student)
+            print('---------') << just something to print and separate things visually
+
+    def __str__(self):
+        obj_string = ''
+        obj_string += (self.department + ' ' + self.course_id + ': ' + self.name + '\n')
+        obj_string += ('Enrolled: ' + str(len(self.students)))
+
+codecamp = Course('Immersive CodeCamp', 102, 'LC', 'Chris Bay')
+todd = Student('Todd', 'Anderson', 4)
